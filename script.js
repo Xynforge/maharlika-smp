@@ -1,6 +1,6 @@
 // MAHARLIKA SMP SETTINGS
 // Change this to your real Minecraft server address.
-const SERVER_IP = "YOUR-SERVER-IP-HERE";
+const SERVER_IP = "YComing Soon";
 
 document.getElementById("serverIp").textContent = SERVER_IP;
 
