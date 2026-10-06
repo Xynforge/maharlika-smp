@@ -1,30 +1,36 @@
-// MAHARLIKA SMP SETTINGS
-// Change this to your real Minecraft server address.
-const SERVER_IP = "Coming Soon";
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
 
-document.getElementById("serverIp").textContent = SERVER_IP;
-
-function toast(message){
-  const t=document.getElementById("toast");
-  t.textContent=message;t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),1800);
-}
-async function copyIP(){
-  try{await navigator.clipboard.writeText(SERVER_IP);toast("Server IP copied!")}
-  catch{toast("Copy failed — select the IP manually.")}
-}
-document.getElementById("copyIp").onclick=copyIP;
-document.getElementById("copyIp2").onclick=copyIP;
-
-document.querySelectorAll(".prices button").forEach(btn=>{
-  btn.onclick=()=>toast("Add your payment/checkout link to this package.");
-});
-
-document.querySelector(".menu").onclick=()=>{
-  const n=document.querySelector("nav");
-  n.style.display=n.style.display==="flex"?"":"flex";
-  if(n.style.display==="flex"){
-    n.style.position="absolute";n.style.top="74px";n.style.left="0";n.style.right="0";
-    n.style.padding="18px 6%";n.style.flexDirection="column";n.style.background="#0b0a11";
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      navMenu.classList.toggle('active');
+    });
   }
-};
+
+  // Copy IP functional buttons
+  const copyButtons = document.querySelectorAll('.copy-ip-btn');
+  const toast = document.getElementById('toast');
+
+  copyButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const ip = btn.getAttribute('data-ip') || 'play.maharlikasmp.com';
+      navigator.clipboard.writeText(ip).then(() => {
+        showToast();
+      }).catch((err) => {
+        console.error('Failed to copy server IP: ', err);
+      });
+    });
+  });
+
+  function showToast() {
+    if (!toast) return;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+});
