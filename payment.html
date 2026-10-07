@@ -1,213 +1,265 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Maharlika SMP | Checkout</title>
+  <meta name="description" content="MAHARLIKA SMP Points Checkout">
+
+  <title>Checkout | MAHARLIKA SMP</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, #24143d 0%, #0b0910 45%, #07070a 100%);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
+        radial-gradient(circle at top left, #35106b 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #1b0a38 0%, transparent 35%),
+        #090711;
+      color: #fff;
+      min-height: 100vh;
+      padding: 30px 15px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
       width: 100%;
-      max-width: 950px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: #111017;
-      border: 1px solid #30263f;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+      max-width: 1050px;
+      margin: auto;
     }
 
-    /* LEFT SIDE */
-
-    .left {
-      padding: 45px;
-      background: linear-gradient(145deg, #1b1228, #0f0d14);
-    }
-
-    .logo {
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      color: #b86cff;
-      margin-bottom: 45px;
-    }
-
-    .left h1 {
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
-
-    .description {
-      color: #aaa3b3;
-      line-height: 1.6;
-      margin-bottom: 35px;
-    }
-
-    .product-card {
-      background: #17131e;
-      border: 1px solid #3a2b4d;
-      border-radius: 15px;
-      padding: 22px;
-    }
-
-    .product-header {
+    .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
+      margin-bottom: 30px;
     }
 
-    .product-name {
-      font-size: 20px;
-      font-weight: bold;
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
 
-    .product-price {
-      font-size: 21px;
-      font-weight: bold;
-      color: #c178ff;
+    .brand span {
+      color: #a855f7;
     }
 
-    .product-description {
-      margin-top: 12px;
-      color: #99929f;
+    .back {
+      color: #b9a8d8;
       font-size: 14px;
-      line-height: 1.5;
+      transition: 0.2s;
+    }
+
+    .back:hover {
+      color: #fff;
+    }
+
+    .checkout-title {
+      margin-bottom: 25px;
+    }
+
+    .checkout-title span {
+      color: #a855f7;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .checkout-title h1 {
+      font-size: 36px;
+      margin-top: 8px;
+    }
+
+    .checkout-title p {
+      color: #aaa1b9;
+      margin-top: 8px;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(20, 16, 32, 0.9);
+      border: 1px solid #302640;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* PRODUCT */
+
+    .product-box {
+      background: linear-gradient(135deg, #211332, #130d1f);
+      border: 1px solid #563083;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .product-label {
+      color: #a855f7;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+
+    .points {
+      font-size: 42px;
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    .points span {
+      color: #c084fc;
+    }
+
+    .price {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .bonus {
+      color: #6ee7b7;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .info {
+      color: #a9a1b4;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .security {
-      margin-top: 25px;
-      color: #77717f;
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      color: #c9bfd5;
       font-size: 13px;
       line-height: 1.5;
     }
 
-    /* RIGHT SIDE */
+    /* FORM */
 
-    .right {
-      padding: 45px;
+    .field {
+      margin-bottom: 18px;
     }
 
-    .title {
-      font-size: 21px;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
-
-    label {
+    .field label {
       display: block;
-      color: #aaa3b3;
+      margin-bottom: 7px;
       font-size: 13px;
-      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ddd6e5;
     }
 
-    input,
-    select {
+    .field input,
+    .field select {
       width: 100%;
-      padding: 14px;
-      margin-bottom: 20px;
+      padding: 13px 14px;
+      background: #0d0a13;
+      color: #fff;
+      border: 1px solid #3a3048;
       border-radius: 10px;
-      border: 1px solid #392e47;
-      background: #0b0a0f;
-      color: white;
       outline: none;
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    input:focus,
-    select:focus {
-      border-color: #a95cff;
+    .field input:focus,
+    .field select:focus {
+      border-color: #a855f7;
     }
 
-    /* PAYMENT METHODS */
-
-    .methods {
+    .payment-methods {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-bottom: 25px;
     }
 
-    .method {
-      position: relative;
-    }
-
-    .method input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .method span {
-      display: block;
-      padding: 13px 5px;
-      text-align: center;
-      background: #0c0b10;
-      border: 1px solid #392e47;
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      border: 1px solid #3a3048;
       border-radius: 10px;
       cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-      color: #aaa3b3;
+      background: #0d0a13;
+      transition: 0.2s;
     }
 
-    .method input:checked + span {
-      background: #26143b;
-      border-color: #a95cff;
-      color: white;
+    .payment-option:hover {
+      border-color: #8b5cf6;
+    }
+
+    .payment-option input {
+      accent-color: #a855f7;
+    }
+
+    .payment-name {
+      font-weight: bold;
+    }
+
+    .payment-desc {
+      display: block;
+      color: #8e8699;
+      font-size: 12px;
+      margin-top: 2px;
     }
 
     /* SUMMARY */
 
     .summary {
-      border-top: 1px solid #30263b;
-      border-bottom: 1px solid #30263b;
-      padding: 18px 0;
-      margin-bottom: 22px;
+      border-top: 1px solid #332b3e;
+      margin-top: 22px;
+      padding-top: 20px;
     }
 
     .summary-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
-      color: #aaa3b3;
+      margin-bottom: 12px;
+      color: #b8afc0;
+      font-size: 14px;
     }
 
-    .total {
-      color: white;
-      font-size: 20px;
+    .summary-row.total {
+      color: #fff;
+      font-size: 21px;
       font-weight: bold;
       margin-top: 15px;
     }
 
-    /* BUTTON */
-
-    .pay-button {
+    .continue {
       width: 100%;
-      padding: 16px;
-      border: none;
+      margin-top: 20px;
+      border: 0;
       border-radius: 11px;
-      background: linear-gradient(90deg, #873cff, #b05cff);
+      padding: 15px;
+      background: linear-gradient(135deg, #9333ea, #7c3aed);
       color: white;
       font-size: 16px;
       font-weight: bold;
@@ -215,50 +267,52 @@
       transition: 0.2s;
     }
 
-    .pay-button:hover {
-      transform: translateY(-2px);
+    .continue:hover {
+      transform: translateY(-1px);
       filter: brightness(1.1);
     }
 
-    .small-text {
+    .notice {
+      margin-top: 12px;
       text-align: center;
-      margin-top: 13px;
-      color: #716b78;
-      font-size: 12px;
+      color: #777080;
+      font-size: 11px;
       line-height: 1.5;
     }
 
-    .message {
+    .error {
       display: none;
-      margin-top: 15px;
-      padding: 13px;
+      padding: 15px;
+      margin-bottom: 20px;
       border-radius: 10px;
-      background: #271a32;
-      border: 1px solid #633b7c;
-      color: #d8b7ff;
-      font-size: 13px;
-      line-height: 1.5;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      font-size: 14px;
     }
 
-    /* MOBILE */
+    footer {
+      text-align: center;
+      color: #716979;
+      font-size: 12px;
+      margin-top: 30px;
+    }
 
     @media (max-width: 750px) {
-
-      .container {
+      .checkout-grid {
         grid-template-columns: 1fr;
       }
 
-      .left,
-      .right {
-        padding: 30px;
+      .checkout-title h1 {
+        font-size: 29px;
       }
 
-      .left {
-        border-bottom: 1px solid #30263f;
+      .points {
+        font-size: 35px;
       }
 
-      .left h1 {
-        font-size: 30px;
+      .topbar {
+        align-items: flex-start;
       }
     }
   </style>
@@ -268,357 +322,484 @@
 
   <div class="container">
 
-    <!-- LEFT -->
+    <div class="topbar">
+      <a href="index.html" class="brand">
+        ⚔️ MAHARLIKA <span>SMP</span>
+      </a>
 
-    <div class="left">
+      <a href="index.html#store" class="back">
+        ← Back to Points Store
+      </a>
+    </div>
 
-      <div class="logo">
-        MAHARLIKA SMP
-      </div>
+    <div class="checkout-title">
+      <span>POINTS STORE</span>
+      <h1>Complete Your Purchase</h1>
+      <p>Choose your payment method and continue to checkout.</p>
+    </div>
 
-      <h1>Checkout</h1>
+    <div id="errorBox" class="error">
+      Invalid points package. Please return to the Points Store and choose a package again.
+    </div>
 
-      <p class="description">
-        Purchase your Maharlika SMP items and continue your adventure.
-        Your purchase will be delivered to your Minecraft account after
-        payment confirmation.
-      </p>
+    <div class="checkout-grid">
 
-      <div class="product-card">
+      <!-- LEFT SIDE -->
+      <div class="card">
 
-        <div class="product-header">
+        <h2>Your Points Package</h2>
 
-          <div class="product-name" id="productName">
-            1 Key
+        <div class="product-box">
+
+          <div class="product-label">
+            MAHARLIKA SMP POINTS
           </div>
 
-          <div class="product-price" id="productPrice">
-            ₱300
+          <div class="points">
+            <span id="pointsAmount">250</span> POINTS
+          </div>
+
+          <div class="price">
+            ₱<span id="priceAmount">50</span>
+          </div>
+
+          <div id="bonusText" class="bonus">
+            No bonus
           </div>
 
         </div>
 
-        <p class="product-description">
-          Maharlika SMP Key. Use your key on the server to receive
-          rewards from the corresponding crate.
+        <p class="info">
+          Your selected package will be credited to your
+          MAHARLIKA SMP account after your payment has been
+          successfully verified.
+        </p>
+
+        <div class="security">
+          🔒
+          <div>
+            <strong>Secure Checkout</strong><br>
+            Never send your Minecraft password, payment PIN,
+            or OTP through this website.
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT SIDE -->
+      <div class="card">
+
+        <h2>Checkout Details</h2>
+
+        <div class="field">
+          <label for="username">
+            Minecraft Username
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your Minecraft username"
+            maxlength="16"
+            required
+          >
+        </div>
+
+
+        <div class="field">
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+
+        <div class="field">
+          <label for="package">
+            Points Package
+          </label>
+
+          <select id="package">
+            <option value="250" data-price="50">
+              250 Points — ₱50
+            </option>
+
+            <option value="550" data-price="100">
+              550 Points — ₱100
+            </option>
+
+            <option value="1200" data-price="200">
+              1,200 Points — ₱200
+            </option>
+
+            <option value="3250" data-price="500">
+              3,250 Points — ₱500
+            </option>
+
+            <option value="7000" data-price="1000">
+              7,000 Points — ₱1,000
+            </option>
+          </select>
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Payment Method
+          </label>
+
+          <div class="payment-methods">
+
+            <label class="payment-option">
+              <input
+                type="radio"
+                name="payment"
+                value="GCash"
+                checked
+              >
+
+              <div>
+                <span class="payment-name">
+                  GCash
+                </span>
+
+                <span class="payment-desc">
+                  Pay using GCash
+                </span>
+              </div>
+            </label>
+
+
+            <label class="payment-option">
+              <input
+                type="radio"
+                name="payment"
+                value="Maya"
+              >
+
+              <div>
+                <span class="payment-name">
+                  Maya
+                </span>
+
+                <span class="payment-desc">
+                  Pay using Maya
+                </span>
+              </div>
+            </label>
+
+
+            <label class="payment-option">
+              <input
+                type="radio"
+                name="payment"
+                value="MariBank Card"
+              >
+
+              <div>
+                <span class="payment-name">
+                  MariBank / Debit Card
+                </span>
+
+                <span class="payment-desc">
+                  Use your supported debit card
+                </span>
+              </div>
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary">
+
+          <div class="summary-row">
+            <span>Points</span>
+            <strong id="summaryPoints">
+              250
+            </strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Package Price</span>
+            <strong>
+              ₱<span id="summaryPrice">50</span>
+            </strong>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total</span>
+
+            <strong>
+              ₱<span id="totalPrice">50</span>
+            </strong>
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="continue"
+          id="continueButton"
+        >
+          Continue to Payment
+        </button>
+
+        <p class="notice">
+          Payment processing will happen through your configured
+          payment provider. Do not enter passwords, PINs, or OTPs here.
         </p>
 
       </div>
 
-      <div class="security">
-        🔒 Secure checkout<br>
-        Your payment information should be handled by the payment
-        provider. Do not store card or banking information in this website.
-      </div>
-
     </div>
 
-
-    <!-- RIGHT -->
-
-    <div class="right">
-
-      <div class="title">
-        Player Information
-      </div>
-
-      <label for="username">
-        Minecraft Username
-      </label>
-
-      <input
-        type="text"
-        id="username"
-        placeholder="Your Minecraft username"
-        maxlength="16"
-      >
-
-
-      <label for="email">
-        Email Address
-      </label>
-
-      <input
-        type="email"
-        id="email"
-        placeholder="you@example.com"
-      >
-
-
-      <label for="product">
-        Select Product
-      </label>
-
-      <select id="product" onchange="updateProduct()">
-
-        <option value="1 Key|300">
-          1 Key — ₱300
-        </option>
-
-        <option value="2 Keys|600">
-          2 Keys — ₱600
-        </option>
-
-        <option value="3 Keys|900">
-          3 Keys — ₱900
-        </option>
-
-        <option value="5 Keys|1500">
-          5 Keys — ₱1,500
-        </option>
-
-        <option value="10 Keys|3000">
-          10 Keys — ₱3,000
-        </option>
-
-      </select>
-
-
-      <div class="title">
-        Payment Method
-      </div>
-
-
-      <div class="methods">
-
-        <label class="method">
-
-          <input
-            type="radio"
-            name="payment"
-            value="GCash"
-            checked
-          >
-
-          <span>
-            GCash
-          </span>
-
-        </label>
-
-
-        <label class="method">
-
-          <input
-            type="radio"
-            name="payment"
-            value="Maya"
-          >
-
-          <span>
-            Maya
-          </span>
-
-        </label>
-
-
-        <label class="method">
-
-          <input
-            type="radio"
-            name="payment"
-            value="Card"
-          >
-
-          <span>
-            Card
-          </span>
-
-        </label>
-
-      </div>
-
-
-      <!-- SUMMARY -->
-
-      <div class="summary">
-
-        <div class="summary-row">
-
-          <span>
-            Product
-          </span>
-
-          <span id="summaryProduct">
-            1 Key
-          </span>
-
-        </div>
-
-
-        <div class="summary-row">
-
-          <span>
-            Subtotal
-          </span>
-
-          <span id="summaryPrice">
-            ₱300
-          </span>
-
-        </div>
-
-
-        <div class="summary-row total">
-
-          <span>
-            Total
-          </span>
-
-          <span id="totalPrice">
-            ₱300
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="pay-button"
-        onclick="continuePayment()"
-      >
-        Continue to Payment
-      </button>
-
-
-      <div
-        class="message"
-        id="message"
-      ></div>
-
-
-      <p class="small-text">
-        By continuing, you agree to the Maharlika SMP store rules
-        and purchase policy.
-      </p>
-
-    </div>
+    <footer>
+      © 2026 MAHARLIKA SMP · Not affiliated with Mojang or Microsoft.
+    </footer>
 
   </div>
 
 
   <script>
 
-    function peso(amount) {
+    /*
+      ============================================
+      READ PRODUCT AND PRICE FROM THE URL
+      ============================================
 
-      return "₱" +
-        Number(amount).toLocaleString("en-PH");
+      Example:
 
+      payment.html?product=250&price=50
+
+      means:
+
+      250 POINTS
+      ₱50
+    */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const urlProduct = params.get("product");
+    const urlPrice = params.get("price");
+
+
+    /*
+      ============================================
+      AVAILABLE POINTS PACKAGES
+      ============================================
+    */
+
+    const packages = {
+      "250": {
+        points: 250,
+        price: 50,
+        bonus: "No bonus"
+      },
+
+      "550": {
+        points: 550,
+        price: 100,
+        bonus: "+50 BONUS"
+      },
+
+      "1200": {
+        points: 1200,
+        price: 200,
+        bonus: "+200 BONUS"
+      },
+
+      "3250": {
+        points: 3250,
+        price: 500,
+        bonus: "+750 BONUS"
+      },
+
+      "7000": {
+        points: 7000,
+        price: 1000,
+        bonus: "+2,000 BONUS"
+      }
+    };
+
+
+    /*
+      ============================================
+      GET PAGE ELEMENTS
+      ============================================
+    */
+
+    const pointsAmount = document.getElementById("pointsAmount");
+    const priceAmount = document.getElementById("priceAmount");
+    const bonusText = document.getElementById("bonusText");
+
+    const summaryPoints = document.getElementById("summaryPoints");
+    const summaryPrice = document.getElementById("summaryPrice");
+    const totalPrice = document.getElementById("totalPrice");
+
+    const packageSelect = document.getElementById("package");
+    const errorBox = document.getElementById("errorBox");
+
+
+    /*
+      ============================================
+      UPDATE CHECKOUT DISPLAY
+      ============================================
+    */
+
+    function updateCheckout(points) {
+
+      const selectedPackage = packages[points];
+
+      if (!selectedPackage) {
+        errorBox.style.display = "block";
+        return;
+      }
+
+      errorBox.style.display = "none";
+
+      pointsAmount.textContent =
+        selectedPackage.points.toLocaleString();
+
+      priceAmount.textContent =
+        selectedPackage.price.toLocaleString();
+
+      bonusText.textContent =
+        selectedPackage.bonus;
+
+      summaryPoints.textContent =
+        selectedPackage.points.toLocaleString();
+
+      summaryPrice.textContent =
+        selectedPackage.price.toLocaleString();
+
+      totalPrice.textContent =
+        selectedPackage.price.toLocaleString();
+
+      packageSelect.value =
+        String(selectedPackage.points);
     }
 
 
-    function updateProduct() {
+    /*
+      ============================================
+      LOAD PACKAGE FROM PURCHASE BUTTON
+      ============================================
+    */
 
-      const value =
-        document.getElementById("product").value;
+    if (
+      urlProduct &&
+      urlPrice &&
+      packages[urlProduct] &&
+      Number(urlPrice) === packages[urlProduct].price
+    ) {
 
-      const parts = value.split("|");
+      updateCheckout(urlProduct);
 
-      const product = parts[0];
-      const price = parts[1];
-
-
-      document.getElementById("productName")
-        .textContent = product;
-
-      document.getElementById("productPrice")
-        .textContent = peso(price);
-
-      document.getElementById("summaryProduct")
-        .textContent = product;
-
-      document.getElementById("summaryPrice")
-        .textContent = peso(price);
-
-      document.getElementById("totalPrice")
-        .textContent = peso(price);
-
-    }
-
-
-    function continuePayment() {
-
-      const username =
-        document.getElementById("username")
-        .value.trim();
-
-      const email =
-        document.getElementById("email")
-        .value.trim();
-
-      const value =
-        document.getElementById("product").value;
-
-      const parts = value.split("|");
-
-      const product = parts[0];
-      const price = parts[1];
-
-      const payment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        ).value;
-
-
-      const message =
-        document.getElementById("message");
-
-
-      if (!username) {
-
-        message.style.display = "block";
-
-        message.textContent =
-          "Please enter your Minecraft username.";
-
-        return;
-
-      }
-
-
-      if (!email) {
-
-        message.style.display = "block";
-
-        message.textContent =
-          "Please enter your email address.";
-
-        return;
-
-      }
-
+    } else {
 
       /*
-        PAYMENT PROVIDER GOES HERE.
-
-        Example:
-
-        window.location.href =
-        "YOUR_PAYMENT_CHECKOUT_LINK";
-
-        DO NOT put secret API keys in this file.
+        If someone opens payment.html directly,
+        default to the ₱50 / 250 Points package.
       */
 
-
-      message.style.display = "block";
-
-      message.innerHTML =
-        "Purchase ready!<br><br>" +
-
-        "Minecraft: <b>" + username + "</b><br>" +
-
-        "Product: <b>" + product + "</b><br>" +
-
-        "Amount: <b>" + peso(price) + "</b><br>" +
-
-        "Payment: <b>" + payment + "</b><br><br>" +
-
-        "Your payment provider needs to be connected here.";
+      updateCheckout("250");
 
     }
+
+
+    /*
+      ============================================
+      IF USER CHANGES PACKAGE
+      ============================================
+    */
+
+    packageSelect.addEventListener("change", function () {
+
+      updateCheckout(this.value);
+
+    });
+
+
+    /*
+      ============================================
+      CONTINUE BUTTON
+      ============================================
+    */
+
+    document
+      .getElementById("continueButton")
+      .addEventListener("click", function () {
+
+        const username =
+          document.getElementById("username").value.trim();
+
+        const email =
+          document.getElementById("email").value.trim();
+
+        const selectedPackage =
+          packages[packageSelect.value];
+
+        const payment =
+          document.querySelector(
+            'input[name="payment"]:checked'
+          ).value;
+
+
+        if (!username) {
+
+          alert(
+            "Please enter your Minecraft username."
+          );
+
+          return;
+        }
+
+
+        if (!email) {
+
+          alert(
+            "Please enter your email address."
+          );
+
+          return;
+        }
+
+
+        /*
+          IMPORTANT:
+
+          This is only the checkout interface.
+
+          You still need to connect this button
+          to your actual payment provider before
+          accepting real payments.
+        */
+
+        alert(
+          "Order ready!\\n\\n" +
+          "Minecraft Username: " + username + "\\n" +
+          "Points: " +
+          selectedPackage.points.toLocaleString() + "\\n" +
+          "Price: ₱" +
+          selectedPackage.price.toLocaleString() + "\\n" +
+          "Payment Method: " + payment
+        );
+
+      });
 
   </script>
 
 </body>
 </html>
+```
