@@ -57,7 +57,6 @@
     .back {
       color: #b9a8d8;
       font-size: 14px;
-      transition: 0.2s;
     }
 
     .back:hover {
@@ -319,516 +318,773 @@
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="topbar">
-      <a href="index.html" class="brand">
-        ⚔️ MAHARLIKA <span>SMP</span>
-      </a>
+  <!-- TOP BAR -->
 
-      <a href="index.html#store" class="back">
-        ← Back to Points Store
-      </a>
-    </div>
+  <div class="topbar">
 
-    <div class="checkout-title">
-      <span>POINTS STORE</span>
-      <h1>Complete Your Purchase</h1>
-      <p>Choose your payment method and continue to checkout.</p>
-    </div>
+    <a href="index.html" class="brand">
+      ⚔️ MAHARLIKA <span>SMP</span>
+    </a>
 
-    <div id="errorBox" class="error">
-      Invalid points package. Please return to the Points Store and choose a package again.
-    </div>
-
-    <div class="checkout-grid">
-
-      <!-- LEFT SIDE -->
-      <div class="card">
-
-        <h2>Your Points Package</h2>
-
-        <div class="product-box">
-
-          <div class="product-label">
-            MAHARLIKA SMP POINTS
-          </div>
-
-          <div class="points">
-            <span id="pointsAmount">250</span> POINTS
-          </div>
-
-          <div class="price">
-            ₱<span id="priceAmount">50</span>
-          </div>
-
-          <div id="bonusText" class="bonus">
-            No bonus
-          </div>
-
-        </div>
-
-        <p class="info">
-          Your selected package will be credited to your
-          MAHARLIKA SMP account after your payment has been
-          successfully verified.
-        </p>
-
-        <div class="security">
-          🔒
-          <div>
-            <strong>Secure Checkout</strong><br>
-            Never send your Minecraft password, payment PIN,
-            or OTP through this website.
-          </div>
-        </div>
-
-      </div>
-
-
-      <!-- RIGHT SIDE -->
-      <div class="card">
-
-        <h2>Checkout Details</h2>
-
-        <div class="field">
-          <label for="username">
-            Minecraft Username
-          </label>
-
-          <input
-            type="text"
-            id="username"
-            placeholder="Enter your Minecraft username"
-            maxlength="16"
-            required
-          >
-        </div>
-
-
-        <div class="field">
-          <label for="email">
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            placeholder="you@example.com"
-            required
-          >
-        </div>
-
-
-        <div class="field">
-          <label for="package">
-            Points Package
-          </label>
-
-          <select id="package">
-            <option value="250" data-price="50">
-              250 Points — ₱50
-            </option>
-
-            <option value="550" data-price="100">
-              550 Points — ₱100
-            </option>
-
-            <option value="1200" data-price="200">
-              1,200 Points — ₱200
-            </option>
-
-            <option value="3250" data-price="500">
-              3,250 Points — ₱500
-            </option>
-
-            <option value="7000" data-price="1000">
-              7,000 Points — ₱1,000
-            </option>
-          </select>
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Payment Method
-          </label>
-
-          <div class="payment-methods">
-
-            <label class="payment-option">
-              <input
-                type="radio"
-                name="payment"
-                value="GCash"
-                checked
-              >
-
-              <div>
-                <span class="payment-name">
-                  GCash
-                </span>
-
-                <span class="payment-desc">
-                  Pay using GCash
-                </span>
-              </div>
-            </label>
-
-
-            <label class="payment-option">
-              <input
-                type="radio"
-                name="payment"
-                value="Maya"
-              >
-
-              <div>
-                <span class="payment-name">
-                  Maya
-                </span>
-
-                <span class="payment-desc">
-                  Pay using Maya
-                </span>
-              </div>
-            </label>
-
-
-            <label class="payment-option">
-              <input
-                type="radio"
-                name="payment"
-                value="MariBank Card"
-              >
-
-              <div>
-                <span class="payment-name">
-                  MariBank / Debit Card
-                </span>
-
-                <span class="payment-desc">
-                  Use your supported debit card
-                </span>
-              </div>
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <div class="summary">
-
-          <div class="summary-row">
-            <span>Points</span>
-            <strong id="summaryPoints">
-              250
-            </strong>
-          </div>
-
-          <div class="summary-row">
-            <span>Package Price</span>
-            <strong>
-              ₱<span id="summaryPrice">50</span>
-            </strong>
-          </div>
-
-          <div class="summary-row total">
-            <span>Total</span>
-
-            <strong>
-              ₱<span id="totalPrice">50</span>
-            </strong>
-          </div>
-
-        </div>
-
-
-        <button
-          type="button"
-          class="continue"
-          id="continueButton"
-        >
-          Continue to Payment
-        </button>
-
-        <p class="notice">
-          Payment processing will happen through your configured
-          payment provider. Do not enter passwords, PINs, or OTPs here.
-        </p>
-
-      </div>
-
-    </div>
-
-    <footer>
-      © 2026 MAHARLIKA SMP · Not affiliated with Mojang or Microsoft.
-    </footer>
+    <a href="index.html#store" class="back">
+      ← Back to Points Store
+    </a>
 
   </div>
 
 
-  <script>
+  <!-- TITLE -->
 
-    /*
-      ============================================
-      READ PRODUCT AND PRICE FROM THE URL
-      ============================================
+  <div class="checkout-title">
 
-      Example:
+    <span>POINTS STORE</span>
 
-      payment.html?product=250&price=50
+    <h1>
+      Complete Your Purchase
+    </h1>
 
-      means:
+    <p>
+      Choose your payment method and continue to checkout.
+    </p>
 
-      250 POINTS
-      ₱50
-    */
-
-    const params = new URLSearchParams(window.location.search);
-
-    const urlProduct = params.get("product");
-    const urlPrice = params.get("price");
+  </div>
 
 
-    /*
-      ============================================
-      AVAILABLE POINTS PACKAGES
-      ============================================
-    */
+  <!-- ERROR -->
 
-    const packages = {
-      "250": {
-        points: 250,
-        price: 50,
-        bonus: "No bonus"
-      },
-
-      "550": {
-        points: 550,
-        price: 100,
-        bonus: "+50 BONUS"
-      },
-
-      "1200": {
-        points: 1200,
-        price: 200,
-        bonus: "+200 BONUS"
-      },
-
-      "3250": {
-        points: 3250,
-        price: 500,
-        bonus: "+750 BONUS"
-      },
-
-      "7000": {
-        points: 7000,
-        price: 1000,
-        bonus: "+2,000 BONUS"
-      }
-    };
+  <div id="errorBox" class="error">
+    Invalid points package. Please return to the Points Store
+    and select a package again.
+  </div>
 
 
-    /*
-      ============================================
-      GET PAGE ELEMENTS
-      ============================================
-    */
+  <!-- CHECKOUT -->
 
-    const pointsAmount = document.getElementById("pointsAmount");
-    const priceAmount = document.getElementById("priceAmount");
-    const bonusText = document.getElementById("bonusText");
-
-    const summaryPoints = document.getElementById("summaryPoints");
-    const summaryPrice = document.getElementById("summaryPrice");
-    const totalPrice = document.getElementById("totalPrice");
-
-    const packageSelect = document.getElementById("package");
-    const errorBox = document.getElementById("errorBox");
+  <div class="checkout-grid">
 
 
-    /*
-      ============================================
-      UPDATE CHECKOUT DISPLAY
-      ============================================
-    */
+    <!-- LEFT CARD -->
 
-    function updateCheckout(points) {
+    <div class="card">
 
-      const selectedPackage = packages[points];
+      <h2>
+        Your Points Package
+      </h2>
 
-      if (!selectedPackage) {
-        errorBox.style.display = "block";
-        return;
-      }
 
-      errorBox.style.display = "none";
+      <div class="product-box">
 
-      pointsAmount.textContent =
-        selectedPackage.points.toLocaleString();
+        <div class="product-label">
+          MAHARLIKA SMP POINTS
+        </div>
 
-      priceAmount.textContent =
-        selectedPackage.price.toLocaleString();
 
-      bonusText.textContent =
-        selectedPackage.bonus;
+        <div class="points">
 
-      summaryPoints.textContent =
-        selectedPackage.points.toLocaleString();
+          <span id="pointsAmount">
+            250
+          </span>
 
-      summaryPrice.textContent =
-        selectedPackage.price.toLocaleString();
+          POINTS
 
-      totalPrice.textContent =
-        selectedPackage.price.toLocaleString();
+        </div>
 
-      packageSelect.value =
-        String(selectedPackage.points);
+
+        <div class="price">
+
+          ₱<span id="priceAmount">
+            50
+          </span>
+
+        </div>
+
+
+        <div id="bonusText" class="bonus">
+          No bonus
+        </div>
+
+      </div>
+
+
+      <p class="info">
+
+        Your selected package will be credited to your
+        MAHARLIKA SMP account after your payment has been
+        successfully verified.
+
+      </p>
+
+
+      <div class="security">
+
+        🔒
+
+        <div>
+
+          <strong>
+            Secure Checkout
+          </strong>
+
+          <br>
+
+          Never send your Minecraft password, payment PIN,
+          or OTP through this website.
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT CARD -->
+
+    <div class="card">
+
+      <h2>
+        Checkout Details
+      </h2>
+
+
+      <!-- USERNAME -->
+
+      <div class="field">
+
+        <label for="username">
+          Minecraft Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your Minecraft username"
+          maxlength="16"
+        >
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="field">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="you@example.com"
+        >
+
+      </div>
+
+
+      <!-- PACKAGE -->
+
+      <div class="field">
+
+        <label for="package">
+          Points Package
+        </label>
+
+        <select id="package">
+
+          <option value="250">
+            250 Points — ₱50
+          </option>
+
+          <option value="550">
+            550 Points — ₱100
+          </option>
+
+          <option value="1200">
+            1,200 Points — ₱200
+          </option>
+
+          <option value="3250">
+            3,250 Points — ₱500
+          </option>
+
+          <option value="7000">
+            7,000 Points — ₱1,000
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- PAYMENT METHODS -->
+
+      <div class="field">
+
+        <label>
+          Payment Method
+        </label>
+
+
+        <div class="payment-methods">
+
+
+          <!-- GCASH -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="GCash"
+              checked
+            >
+
+            <div>
+
+              <span class="payment-name">
+                GCash
+              </span>
+
+              <span class="payment-desc">
+                Pay using GCash
+              </span>
+
+            </div>
+
+          </label>
+
+
+          <!-- MAYA -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="Maya"
+            >
+
+            <div>
+
+              <span class="payment-name">
+                Maya
+              </span>
+
+              <span class="payment-desc">
+                Pay using Maya
+              </span>
+
+            </div>
+
+          </label>
+
+
+          <!-- MARIBANK -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="MariBank Card"
+            >
+
+            <div>
+
+              <span class="payment-name">
+                MariBank / Debit Card
+              </span>
+
+              <span class="payment-desc">
+                Use your supported debit card
+              </span>
+
+            </div>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <!-- SUMMARY -->
+
+      <div class="summary">
+
+
+        <div class="summary-row">
+
+          <span>
+            Points
+          </span>
+
+          <strong id="summaryPoints">
+            250
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Package Price
+          </span>
+
+          <strong>
+
+            ₱<span id="summaryPrice">
+              50
+            </span>
+
+          </strong>
+
+        </div>
+
+
+        <div class="summary-row total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+
+            ₱<span id="totalPrice">
+              50
+            </span>
+
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- CONTINUE BUTTON -->
+
+      <button
+        type="button"
+        class="continue"
+        id="continueButton"
+      >
+        Continue to Payment
+      </button>
+
+
+      <p class="notice">
+
+        Do not enter passwords, PINs, or OTPs here.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    © 2026 MAHARLIKA SMP ·
+    Not affiliated with Mojang or Microsoft.
+
+  </footer>
+
+</div>
+
+
+<script>
+
+  /*
+  ============================================
+  POINTS PACKAGES
+  ============================================
+  */
+
+  const packages = {
+
+    "250": {
+      points: 250,
+      price: 50,
+      bonus: "No bonus"
+    },
+
+    "550": {
+      points: 550,
+      price: 100,
+      bonus: "+50 BONUS"
+    },
+
+    "1200": {
+      points: 1200,
+      price: 200,
+      bonus: "+200 BONUS"
+    },
+
+    "3250": {
+      points: 3250,
+      price: 500,
+      bonus: "+750 BONUS"
+    },
+
+    "7000": {
+      points: 7000,
+      price: 1000,
+      bonus: "+2,000 BONUS"
+    }
+
+  };
+
+
+  /*
+  ============================================
+  GET URL PARAMETERS
+  ============================================
+  */
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const urlProduct =
+    params.get("product");
+
+
+  const urlPrice =
+    params.get("price");
+
+
+  /*
+  ============================================
+  GET ELEMENTS
+  ============================================
+  */
+
+  const pointsAmount =
+    document.getElementById(
+      "pointsAmount"
+    );
+
+
+  const priceAmount =
+    document.getElementById(
+      "priceAmount"
+    );
+
+
+  const bonusText =
+    document.getElementById(
+      "bonusText"
+    );
+
+
+  const summaryPoints =
+    document.getElementById(
+      "summaryPoints"
+    );
+
+
+  const summaryPrice =
+    document.getElementById(
+      "summaryPrice"
+    );
+
+
+  const totalPrice =
+    document.getElementById(
+      "totalPrice"
+    );
+
+
+  const packageSelect =
+    document.getElementById(
+      "package"
+    );
+
+
+  const errorBox =
+    document.getElementById(
+      "errorBox"
+    );
+
+
+  /*
+  ============================================
+  UPDATE PACKAGE
+  ============================================
+  */
+
+  function updateCheckout(points) {
+
+    const selectedPackage =
+      packages[points];
+
+
+    if (!selectedPackage) {
+
+      errorBox.style.display =
+        "block";
+
+      return;
+
     }
 
 
-    /*
-      ============================================
-      LOAD PACKAGE FROM PURCHASE BUTTON
-      ============================================
-    */
+    errorBox.style.display =
+      "none";
 
-    if (
-      urlProduct &&
-      urlPrice &&
-      packages[urlProduct] &&
-      Number(urlPrice) === packages[urlProduct].price
-    ) {
 
-      updateCheckout(urlProduct);
+    pointsAmount.textContent =
+      selectedPackage.points
+        .toLocaleString();
 
-    } else {
 
-      /*
-        If someone opens payment.html directly,
-        default to the ₱50 / 250 Points package.
-      */
+    priceAmount.textContent =
+      selectedPackage.price
+        .toLocaleString();
 
-      updateCheckout("250");
+
+    bonusText.textContent =
+      selectedPackage.bonus;
+
+
+    summaryPoints.textContent =
+      selectedPackage.points
+        .toLocaleString();
+
+
+    summaryPrice.textContent =
+      selectedPackage.price
+        .toLocaleString();
+
+
+    totalPrice.textContent =
+      selectedPackage.price
+        .toLocaleString();
+
+
+    packageSelect.value =
+      String(
+        selectedPackage.points
+      );
+
+  }
+
+
+  /*
+  ============================================
+  LOAD PACKAGE
+  ============================================
+  */
+
+  if (
+    urlProduct &&
+    packages[urlProduct] &&
+    Number(urlPrice) ===
+      packages[urlProduct].price
+  ) {
+
+    updateCheckout(
+      urlProduct
+    );
+
+  } else {
+
+    updateCheckout(
+      "250"
+    );
+
+  }
+
+
+  /*
+  ============================================
+  PACKAGE DROPDOWN
+  ============================================
+  */
+
+  packageSelect.addEventListener(
+    "change",
+    function () {
+
+      updateCheckout(
+        this.value
+      );
 
     }
+  );
 
 
-    /*
-      ============================================
-      IF USER CHANGES PACKAGE
-      ============================================
-    */
-
-    packageSelect.addEventListener("change", function () {
-
-      updateCheckout(this.value);
-
-    });
-
-/*
+  /*
   ============================================
   CONTINUE BUTTON
   ============================================
-*/
+  */
 
-document
-  .getElementById("continueButton")
-  .addEventListener("click", function () {
-
-    const username =
-      document.getElementById("username").value.trim();
-
-    const email =
-      document.getElementById("email").value.trim();
-
-    const selectedPackage =
-      packages[packageSelect.value];
-
-    const paymentElement =
-      document.querySelector(
-        'input[name="payment"]:checked'
-      );
+  document
+    .getElementById(
+      "continueButton"
+    )
+    .addEventListener(
+      "click",
+      function () {
 
 
-    /* Check username */
-
-    if (!username) {
-      alert("Please enter your Minecraft username.");
-      return;
-    }
-
-
-    /* Check email */
-
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
+        const username =
+          document
+            .getElementById(
+              "username"
+            )
+            .value
+            .trim();
 
 
-    /* Check payment method */
-
-    if (!paymentElement) {
-      alert("Please select a payment method.");
-      return;
-    }
-
-
-    /* Check package */
-
-    if (!selectedPackage) {
-      alert("Invalid Points package.");
-      return;
-    }
+        const email =
+          document
+            .getElementById(
+              "email"
+            )
+            .value
+            .trim();
 
 
-    const paymentMethod =
-      paymentElement.value;
+        const selectedPackage =
+          packages[
+            packageSelect.value
+          ];
 
 
-    /*
-      Generate an order ID
-    */
-
-    const orderId =
-      "MH-" +
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
+        const paymentElement =
+          document.querySelector(
+            'input[name="payment"]:checked'
+          );
 
 
-    /*
-      Send the customer to success.html
-    */
+        /*
+        CHECK USERNAME
+        */
 
-    const successUrl =
-      "success.html" +
-      "?username=" +
-      encodeURIComponent(username) +
-      "&points=" +
-      encodeURIComponent(
-        selectedPackage.points
-      ) +
-      "&price=" +
-      encodeURIComponent(
-        selectedPackage.price
-      ) +
-      "&payment=" +
-      encodeURIComponent(
-        paymentMethod
-      ) +
-      "&order=" +
-      encodeURIComponent(
-        orderId
-      );
+        if (!username) {
+
+          alert(
+            "Please enter your Minecraft username."
+          );
+
+          return;
+
+        }
 
 
-    window.location.href =
-      successUrl;
+        /*
+        CHECK EMAIL
+        */
 
-  });
+        if (!email) {
+
+          alert(
+            "Please enter your email address."
+          );
+
+          return;
+
+        }
+
+
+        /*
+        CHECK PAYMENT METHOD
+        */
+
+        if (!paymentElement) {
+
+          alert(
+            "Please select a payment method."
+          );
+
+          return;
+
+        }
+
+
+        /*
+        CHECK PACKAGE
+        */
+
+        if (!selectedPackage) {
+
+          alert(
+            "Invalid Points package."
+          );
+
+          return;
+
+        }
+
+
+        /*
+        PAYMENT METHOD
+        */
+
+        const paymentMethod =
+          paymentElement.value;
+
+
+        /*
+        CREATE ORDER ID
+        */
+
+        const orderId =
+          "MH-" +
+          Math.random()
+            .toString(36)
+            .substring(2, 8)
+            .toUpperCase();
+
+
+        /*
+        CREATE SUCCESS PAGE URL
+        */
+
+        const successUrl =
+          "success.html" +
+          "?username=" +
+          encodeURIComponent(
+            username
+          ) +
+          "&points=" +
+          encodeURIComponent(
+            selectedPackage.points
+          ) +
+          "&price=" +
+          encodeURIComponent(
+            selectedPackage.price
+          ) +
+          "&payment=" +
+          encodeURIComponent(
+            paymentMethod
+          ) +
+          "&order=" +
+          encodeURIComponent(
+            orderId
+          );
+
+
+        /*
+        GO TO RECEIPT
+        */
+
+        window.location.href =
+          successUrl;
+
+      }
+    );
+
+</script>
+
+</body>
+</html>
