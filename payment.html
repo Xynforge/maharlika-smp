@@ -729,75 +729,106 @@
 
     });
 
+/*
+  ============================================
+  CONTINUE BUTTON
+  ============================================
+*/
+
+document
+  .getElementById("continueButton")
+  .addEventListener("click", function () {
+
+    const username =
+      document.getElementById("username").value.trim();
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const selectedPackage =
+      packages[packageSelect.value];
+
+    const paymentElement =
+      document.querySelector(
+        'input[name="payment"]:checked'
+      );
+
+
+    /* Check username */
+
+    if (!username) {
+      alert("Please enter your Minecraft username.");
+      return;
+    }
+
+
+    /* Check email */
+
+    if (!email) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+
+    /* Check payment method */
+
+    if (!paymentElement) {
+      alert("Please select a payment method.");
+      return;
+    }
+
+
+    /* Check package */
+
+    if (!selectedPackage) {
+      alert("Invalid Points package.");
+      return;
+    }
+
+
+    const paymentMethod =
+      paymentElement.value;
+
 
     /*
-      ============================================
-      CONTINUE BUTTON
-      ============================================
+      Generate an order ID
     */
 
-    document
-      .getElementById("continueButton")
-      .addEventListener("click", function () {
-
-        const username =
-          document.getElementById("username").value.trim();
-
-        const email =
-          document.getElementById("email").value.trim();
-
-        const selectedPackage =
-          packages[packageSelect.value];
-
-        const payment =
-          document.querySelector(
-            'input[name="payment"]:checked'
-          ).value;
+    const orderId =
+      "MH-" +
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
 
 
-        if (!username) {
+    /*
+      Send the customer to success.html
+    */
 
-          alert(
-            "Please enter your Minecraft username."
-          );
+    const successUrl =
+      "success.html" +
+      "?username=" +
+      encodeURIComponent(username) +
+      "&points=" +
+      encodeURIComponent(
+        selectedPackage.points
+      ) +
+      "&price=" +
+      encodeURIComponent(
+        selectedPackage.price
+      ) +
+      "&payment=" +
+      encodeURIComponent(
+        paymentMethod
+      ) +
+      "&order=" +
+      encodeURIComponent(
+        orderId
+      );
 
-          return;
-        }
 
+    window.location.href =
+      successUrl;
 
-        if (!email) {
-
-          alert(
-            "Please enter your email address."
-          );
-
-          return;
-        }
-
-
-        /*
-          IMPORTANT:
-
-          This is only the checkout interface.
-
-          You still need to connect this button
-          to your actual payment provider before
-          accepting real payments.
-        */
-
-        alert(
-          "Order ready!\\n\\n" +
-          "Minecraft Username: " + username + "\\n" +
-          "Points: " +
-          selectedPackage.points.toLocaleString() + "\\n" +
-          "Price: ₱" +
-          selectedPackage.price.toLocaleString() + "\\n" +
-          "Payment Method: " + payment
-        );
-
-      });
-
-  </script>
-
-</body>
-</html>
+  });
