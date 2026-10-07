@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Payment Successful | MAHARLIKA SMP</title>
+  <meta name="description" content="MAHARLIKA SMP Points Checkout">
+
+  <title>Checkout | MAHARLIKA SMP</title>
 
   <style>
     * {
@@ -14,678 +16,813 @@
     }
 
     body {
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-
       background:
-        radial-gradient(
-          circle at top,
-          #32105f 0%,
-          transparent 40%
-        ),
+        radial-gradient(circle at top left, #35106b 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #1b0a38 0%, transparent 35%),
         #090711;
-
       color: #fff;
+      min-height: 100vh;
+      padding: 30px 15px;
+    }
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      padding: 25px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
       width: 100%;
-      max-width: 620px;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
     }
 
     .brand {
-      text-align: center;
       font-size: 22px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 1px;
-      margin-bottom: 25px;
     }
 
     .brand span {
       color: #a855f7;
     }
 
-    .card {
-      background: rgba(20, 16, 32, 0.96);
-      border: 1px solid #38284a;
-      border-radius: 20px;
-      padding: 35px;
-
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.4);
-
-      text-align: center;
-    }
-
-    .success-icon {
-      width: 75px;
-      height: 75px;
-
-      margin: 0 auto 20px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-radius: 50%;
-
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.4);
-
-      color: #4ade80;
-
-      font-size: 38px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #a9a1b4;
+    .back {
+      color: #b9a8d8;
       font-size: 14px;
-      line-height: 1.6;
+    }
+
+    .checkout-title {
       margin-bottom: 25px;
     }
 
-    /* INSTRUCTIONS */
-
-    .instructions {
-      text-align: left;
-
-      background: rgba(168, 85, 247, 0.08);
-
-      border: 1px solid rgba(168, 85, 247, 0.25);
-
-      border-radius: 14px;
-
-      padding: 20px;
-
-      margin-bottom: 20px;
-    }
-
-    .instructions h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    .step {
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 12px;
-
-      margin-bottom: 13px;
-    }
-
-    .step:last-child {
-      margin-bottom: 0;
-    }
-
-    .number {
-      min-width: 27px;
-      height: 27px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-radius: 50%;
-
-      background: #8b5cf6;
-
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .step-text {
-      color: #c9c0d2;
-
-      font-size: 13px;
-
-      line-height: 1.5;
-    }
-
-    .step-text strong {
-      color: #fff;
-    }
-
-    /* RECEIPT */
-
-    .receipt {
-      text-align: left;
-
-      background: #0d0a13;
-
-      border: 1px solid #302640;
-
-      border-radius: 14px;
-
-      padding: 20px;
-
-      margin-bottom: 20px;
-    }
-
-    .receipt-title {
+    .checkout-title span {
       color: #a855f7;
-
-      font-size: 12px;
-
+      font-size: 13px;
       font-weight: bold;
-
       letter-spacing: 2px;
-
-      margin-bottom: 18px;
     }
 
-    .row {
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding: 11px 0;
-
-      border-bottom: 1px solid #211b29;
-
-      font-size: 14px;
+    .checkout-title h1 {
+      font-size: 36px;
+      margin-top: 8px;
     }
 
-    .row:last-child {
-      border-bottom: none;
+    .checkout-title p {
+      color: #aaa1b9;
+      margin-top: 8px;
     }
 
-    .row span:first-child {
-      color: #918898;
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
     }
 
-    .row strong {
-      color: #fff;
+    .card {
+      background: rgba(20, 16, 32, 0.9);
+      border: 1px solid #302640;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
 
-      text-align: right;
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
 
-      word-break: break-word;
+    .product-box {
+      background: linear-gradient(135deg, #211332, #130d1f);
+      border: 1px solid #563083;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .product-label {
+      color: #a855f7;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
     }
 
     .points {
-      color: #c084fc !important;
-      font-size: 17px;
+      font-size: 42px;
+      font-weight: 900;
+      margin-top: 8px;
     }
 
-    .status {
-      color: #4ade80 !important;
+    .points span {
+      color: #c084fc;
     }
 
-    /* DISCORD */
+    .price {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
 
-    .discord-box {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(88, 101, 242, 0.15),
-          rgba(124, 58, 237, 0.08)
-        );
+    .bonus {
+      color: #6ee7b7;
+      font-size: 14px;
+      margin-top: 8px;
+    }
 
-      border: 1px solid rgba(124, 90, 200, 0.35);
+    .info {
+      color: #a9a1b4;
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
-      border-radius: 14px;
+    .security {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      color: #c9bfd5;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
-      padding: 22px;
-
+    .field {
       margin-bottom: 18px;
     }
 
-    .discord-box h2 {
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .discord-box p {
-      color: #aaa1b9;
-
+    .field label {
+      display: block;
+      margin-bottom: 7px;
       font-size: 13px;
-
-      line-height: 1.6;
-
-      margin-bottom: 17px;
-    }
-
-    .discord-button {
-      display: block;
-
-      width: 100%;
-
-      padding: 15px;
-
-      border-radius: 10px;
-
-      background: #5865f2;
-
-      color: white;
-
-      font-size: 15px;
-
       font-weight: bold;
-
-      text-decoration: none;
-
-      transition: 0.2s;
+      color: #ddd6e5;
     }
 
-    .discord-button:hover {
-      filter: brightness(1.1);
-      transform: translateY(-1px);
-    }
-
-    .home-button {
-      display: block;
-
+    .field input,
+    .field select {
       width: 100%;
-
-      padding: 13px;
-
+      padding: 13px 14px;
+      background: #0d0a13;
+      color: #fff;
+      border: 1px solid #3a3048;
       border-radius: 10px;
-
-      border: 1px solid #3b3048;
-
-      color: #c9c0d2;
-
-      text-decoration: none;
-
+      outline: none;
       font-size: 14px;
-
-      transition: 0.2s;
     }
 
-    .home-button:hover {
-      border-color: #8b5cf6;
+    .field input:focus,
+    .field select:focus {
+      border-color: #a855f7;
+    }
+
+    .payment-methods {
+      display: grid;
+      gap: 10px;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      border: 1px solid #3a3048;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #0d0a13;
+    }
+
+    .payment-option input {
+      accent-color: #a855f7;
+    }
+
+    .payment-name {
+      font-weight: bold;
+    }
+
+    .payment-desc {
+      display: block;
+      color: #8e8699;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .summary {
+      border-top: 1px solid #332b3e;
+      margin-top: 22px;
+      padding-top: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: #b8afc0;
+      font-size: 14px;
+    }
+
+    .summary-row.total {
+      color: #fff;
+      font-size: 21px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .continue {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 11px;
+      padding: 15px;
+      background: linear-gradient(135deg, #9333ea, #7c3aed);
       color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .note {
-      margin-top: 18px;
+    .continue:hover {
+      filter: brightness(1.1);
+    }
 
-      color: #6f6878;
-
+    .notice {
+      margin-top: 12px;
+      text-align: center;
+      color: #777080;
       font-size: 11px;
-
       line-height: 1.5;
+    }
+
+    .error {
+      display: none;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      font-size: 14px;
     }
 
     footer {
       text-align: center;
-
-      color: #625b69;
-
-      font-size: 11px;
-
-      margin-top: 20px;
+      color: #716979;
+      font-size: 12px;
+      margin-top: 30px;
     }
 
-    @media (max-width: 550px) {
-
-      .card {
-        padding: 25px 18px;
+    @media (max-width: 750px) {
+      .checkout-grid {
+        grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 27px;
+      .checkout-title h1 {
+        font-size: 29px;
       }
 
-      .row {
-        flex-direction: column;
-        gap: 4px;
+      .points {
+        font-size: 35px;
       }
 
-      .row strong {
-        text-align: left;
+      .topbar {
+        align-items: flex-start;
       }
-
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="brand">
+  <div class="topbar">
+    <a href="index.html" class="brand">
       ⚔️ MAHARLIKA <span>SMP</span>
-    </div>
+    </a>
 
+    <a href="index.html#store" class="back">
+      ← Back to Points Store
+    </a>
+  </div>
+
+  <div class="checkout-title">
+    <span>POINTS STORE</span>
+    <h1>Complete Your Purchase</h1>
+    <p>Choose your payment method and continue to checkout.</p>
+  </div>
+
+  <div id="errorBox" class="error">
+    Invalid points package. Please return to the Points Store.
+  </div>
+
+  <div class="checkout-grid">
+
+    <!-- LEFT -->
     <div class="card">
 
-      <div class="success-icon">
-        ✓
+      <h2>Your Points Package</h2>
+
+      <div class="product-box">
+
+        <div class="product-label">
+          MAHARLIKA SMP POINTS
+        </div>
+
+        <div class="points">
+          <span id="pointsAmount">250</span> POINTS
+        </div>
+
+        <div class="price">
+          ₱<span id="priceAmount">50</span>
+        </div>
+
+        <div id="bonusText" class="bonus">
+          No bonus
+        </div>
+
       </div>
 
-      <h1>
-        Payment Successful!
-      </h1>
-
-      <p class="subtitle">
-        Your payment has been received.
-        Follow the steps below to complete your order.
+      <p class="info">
+        Your selected package will be credited to your
+        MAHARLIKA SMP account after your payment has been
+        successfully verified.
       </p>
 
-
-      <!-- IMPORTANT INSTRUCTIONS -->
-
-      <div class="instructions">
-
-        <h2>
-          🎫 What to do next
-        </h2>
-
-        <div class="step">
-
-          <div class="number">
-            1
-          </div>
-
-          <div class="step-text">
-            <strong>Screenshot this receipt.</strong><br>
-            Keep a screenshot showing your Order ID,
-            Minecraft username, points, and payment status.
-          </div>
-
+      <div class="security">
+        🔒
+        <div>
+          <strong>Secure Checkout</strong><br>
+          Never send your Minecraft password, payment PIN,
+          or OTP through this website.
         </div>
-
-
-        <div class="step">
-
-          <div class="number">
-            2
-          </div>
-
-          <div class="step-text">
-            <strong>Join the MAHARLIKA Discord.</strong><br>
-            Click the Discord button below.
-          </div>
-
-        </div>
-
-
-        <div class="step">
-
-          <div class="number">
-            3
-          </div>
-
-          <div class="step-text">
-            <strong>Create a payment ticket.</strong><br>
-            Open a support/payment ticket and send
-            your receipt screenshot.
-          </div>
-
-        </div>
-
-
-        <div class="step">
-
-          <div class="number">
-            4
-          </div>
-
-          <div class="step-text">
-            <strong>Wait for staff verification.</strong><br>
-            Staff will verify your payment and process
-            your Points order.
-          </div>
-
-        </div>
-
       </div>
-
-
-      <!-- RECEIPT -->
-
-      <div class="receipt">
-
-        <div class="receipt-title">
-          PAYMENT RECEIPT
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Order ID
-          </span>
-
-          <strong id="orderId">
-            MH-000000
-          </strong>
-
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Minecraft Username
-          </span>
-
-          <strong id="username">
-            Player
-          </strong>
-
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Points
-          </span>
-
-          <strong
-            id="points"
-            class="points"
-          >
-            250 Points
-          </strong>
-
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Amount Paid
-          </span>
-
-          <strong id="price">
-            ₱50
-          </strong>
-
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Payment Method
-          </span>
-
-          <strong id="paymentMethod">
-            GCash
-          </strong>
-
-        </div>
-
-
-        <div class="row">
-
-          <span>
-            Status
-          </span>
-
-          <strong class="status">
-            ✓ PAID
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <!-- DISCORD -->
-
-      <div class="discord-box">
-
-        <h2>
-          💬 Create Your Payment Ticket
-        </h2>
-
-        <p>
-          Join our Discord and create a
-          <strong>payment ticket</strong>.
-          Send the screenshot of this receipt
-          to our staff so they can verify your order.
-        </p>
-
-        <a
-          class="discord-button"
-          href="https://discord.gg/5waByTQENN"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          🎫 Join Discord & Create Ticket
-        </a>
-
-      </div>
-
-
-      <a
-        class="home-button"
-        href="index.html"
-      >
-        ← Return to MAHARLIKA SMP
-      </a>
-
-
-      <p class="note">
-        Keep your Order ID until your Points have been delivered.
-        Never share your password, payment PIN, or OTP.
-      </p>
 
     </div>
 
 
-    <footer>
-      © 2026 MAHARLIKA SMP · Not affiliated with Mojang or Microsoft.
-    </footer>
+    <!-- RIGHT -->
+    <div class="card">
+
+      <h2>Checkout Details</h2>
+
+      <div class="field">
+        <label for="username">
+          Minecraft Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your Minecraft username"
+          maxlength="16"
+        >
+      </div>
+
+
+      <div class="field">
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="you@example.com"
+        >
+      </div>
+
+
+      <div class="field">
+        <label for="package">
+          Points Package
+        </label>
+
+        <select id="package">
+
+          <option value="250">
+            250 Points — ₱50
+          </option>
+
+          <option value="550">
+            550 Points — ₱100
+          </option>
+
+          <option value="1200">
+            1,200 Points — ₱200
+          </option>
+
+          <option value="3250">
+            3,250 Points — ₱500
+          </option>
+
+          <option value="7000">
+            7,000 Points — ₱1,000
+          </option>
+
+        </select>
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Payment Method
+        </label>
+
+        <div class="payment-methods">
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="GCash"
+              checked
+            >
+
+            <div>
+              <span class="payment-name">
+                GCash
+              </span>
+
+              <span class="payment-desc">
+                Pay using GCash
+              </span>
+            </div>
+
+          </label>
+
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="Maya"
+            >
+
+            <div>
+              <span class="payment-name">
+                Maya
+              </span>
+
+              <span class="payment-desc">
+                Pay using Maya
+              </span>
+            </div>
+
+          </label>
+
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="MariBank Card"
+            >
+
+            <div>
+              <span class="payment-name">
+                MariBank / Debit Card
+              </span>
+
+              <span class="payment-desc">
+                Use your supported debit card
+              </span>
+            </div>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="summary">
+
+        <div class="summary-row">
+          <span>Points</span>
+          <strong id="summaryPoints">250</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Package Price</span>
+          <strong>
+            ₱<span id="summaryPrice">50</span>
+          </strong>
+        </div>
+
+        <div class="summary-row total">
+          <span>Total</span>
+
+          <strong>
+            ₱<span id="totalPrice">50</span>
+          </strong>
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="continue"
+        id="continueButton"
+        onclick="continueToPayment()"
+      >
+        Continue to Payment
+      </button>
+
+      <p class="notice">
+        Do not enter passwords, PINs, or OTPs here.
+      </p>
+
+    </div>
 
   </div>
 
+  <footer>
+    © 2026 MAHARLIKA SMP · Not affiliated with Mojang or Microsoft.
+  </footer>
 
-  <script>
-
-    /*
-      ============================================
-      READ ORDER INFORMATION FROM URL
-      ============================================
-
-      Example:
-
-      success.html
-      ?username=Xander123
-      &points=1200
-      &price=200
-      &payment=GCash
-      &order=MH-A82K91
-    */
+</div>
 
 
-    const params =
-      new URLSearchParams(
-        window.location.search
+<script>
+
+  const packages = {
+
+    "250": {
+      points: 250,
+      price: 50,
+      bonus: "No bonus"
+    },
+
+    "550": {
+      points: 550,
+      price: 100,
+      bonus: "+50 BONUS"
+    },
+
+    "1200": {
+      points: 1200,
+      price: 200,
+      bonus: "+200 BONUS"
+    },
+
+    "3250": {
+      points: 3250,
+      price: 500,
+      bonus: "+750 BONUS"
+    },
+
+    "7000": {
+      points: 7000,
+      price: 1000,
+      bonus: "+2,000 BONUS"
+    }
+
+  };
+
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const urlProduct =
+    params.get("product");
+
+
+  const urlPrice =
+    params.get("price");
+
+
+  const pointsAmount =
+    document.getElementById("pointsAmount");
+
+
+  const priceAmount =
+    document.getElementById("priceAmount");
+
+
+  const bonusText =
+    document.getElementById("bonusText");
+
+
+  const summaryPoints =
+    document.getElementById("summaryPoints");
+
+
+  const summaryPrice =
+    document.getElementById("summaryPrice");
+
+
+  const totalPrice =
+    document.getElementById("totalPrice");
+
+
+  const packageSelect =
+    document.getElementById("package");
+
+
+  const errorBox =
+    document.getElementById("errorBox");
+
+
+  function updateCheckout(points) {
+
+    const selected =
+      packages[points];
+
+    if (!selected) {
+
+      errorBox.style.display = "block";
+
+      return;
+    }
+
+    errorBox.style.display = "none";
+
+    pointsAmount.textContent =
+      selected.points.toLocaleString();
+
+    priceAmount.textContent =
+      selected.price.toLocaleString();
+
+    bonusText.textContent =
+      selected.bonus;
+
+    summaryPoints.textContent =
+      selected.points.toLocaleString();
+
+    summaryPrice.textContent =
+      selected.price.toLocaleString();
+
+    totalPrice.textContent =
+      selected.price.toLocaleString();
+
+    packageSelect.value =
+      String(selected.points);
+  }
+
+
+  if (
+    urlProduct &&
+    packages[urlProduct] &&
+    Number(urlPrice) === packages[urlProduct].price
+  ) {
+
+    updateCheckout(urlProduct);
+
+  } else {
+
+    updateCheckout("250");
+
+  }
+
+
+  packageSelect.addEventListener(
+    "change",
+    function () {
+
+      updateCheckout(
+        this.value
+      );
+
+    }
+  );
+
+
+  /*
+    ==========================================
+    CONTINUE BUTTON
+    ==========================================
+  */
+
+  function continueToPayment() {
+
+    const username =
+      document
+        .getElementById("username")
+        .value
+        .trim();
+
+
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    const selectedPackage =
+      packages[
+        packageSelect.value
+      ];
+
+
+    const paymentElement =
+      document.querySelector(
+        'input[name="payment"]:checked'
       );
 
 
-    const username =
-      params.get("username");
+    if (!username) {
 
-    const points =
-      params.get("points");
+      alert(
+        "Please enter your Minecraft username."
+      );
 
-    const price =
-      params.get("price");
-
-    const payment =
-      params.get("payment");
-
-    const order =
-      params.get("order");
-
-
-    /*
-      ============================================
-      DISPLAY ORDER INFORMATION
-      ============================================
-    */
-
-
-    if (username) {
-
-      document.getElementById(
-        "username"
-      ).textContent = username;
+      return;
 
     }
 
 
-    if (points) {
+    if (!email) {
 
-      document.getElementById(
-        "points"
-      ).textContent =
-        Number(points).toLocaleString()
-        + " Points";
+      alert(
+        "Please enter your email address."
+      );
 
-    }
-
-
-    if (price) {
-
-      document.getElementById(
-        "price"
-      ).textContent =
-        "₱"
-        + Number(price).toLocaleString();
+      return;
 
     }
 
 
-    if (payment) {
+    if (!paymentElement) {
 
-      document.getElementById(
-        "paymentMethod"
-      ).textContent = payment;
+      alert(
+        "Please select a payment method."
+      );
+
+      return;
+
+    }
+
+
+    if (!selectedPackage) {
+
+      alert(
+        "Invalid Points package."
+      );
+
+      return;
 
     }
 
 
-    if (order) {
+    const paymentMethod =
+      paymentElement.value;
 
-      document.getElementById(
-        "orderId"
-      ).textContent = order;
 
-    }
+    const orderId =
+      "MH-" +
+      Math.random()
+        .toString(36)
+        .substring(2, 8)
+        .toUpperCase();
 
-  </script>
+
+    const successUrl =
+      "success.html" +
+      "?username=" +
+      encodeURIComponent(username) +
+      "&email=" +
+      encodeURIComponent(email) +
+      "&points=" +
+      encodeURIComponent(
+        selectedPackage.points
+      ) +
+      "&price=" +
+      encodeURIComponent(
+        selectedPackage.price
+      ) +
+      "&payment=" +
+      encodeURIComponent(
+        paymentMethod
+      ) +
+      "&order=" +
+      encodeURIComponent(
+        orderId
+      );
+
+
+    window.location.href =
+      successUrl;
+
+  }
+
+</script>
 
 </body>
 </html>
