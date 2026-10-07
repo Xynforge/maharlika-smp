@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Maharlika SMP | Checkout</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #24143d 0%, #0b0910 45%, #07070a 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 950px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #111017;
+      border: 1px solid #30263f;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+    }
+
+    /* LEFT SIDE */
+
+    .left {
+      padding: 45px;
+      background: linear-gradient(145deg, #1b1228, #0f0d14);
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #b86cff;
+      margin-bottom: 45px;
+    }
+
+    .left h1 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #aaa3b3;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
+
+    .product-card {
+      background: #17131e;
+      border: 1px solid #3a2b4d;
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .product-price {
+      font-size: 21px;
+      font-weight: bold;
+      color: #c178ff;
+    }
+
+    .product-description {
+      margin-top: 12px;
+      color: #99929f;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .security {
+      margin-top: 25px;
+      color: #77717f;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* RIGHT SIDE */
+
+    .right {
+      padding: 45px;
+    }
+
+    .title {
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      color: #aaa3b3;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid #392e47;
+      background: #0b0a0f;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #a95cff;
+    }
+
+    /* PAYMENT METHODS */
+
+    .methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .method {
+      position: relative;
+    }
+
+    .method input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .method span {
+      display: block;
+      padding: 13px 5px;
+      text-align: center;
+      background: #0c0b10;
+      border: 1px solid #392e47;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      color: #aaa3b3;
+    }
+
+    .method input:checked + span {
+      background: #26143b;
+      border-color: #a95cff;
+      color: white;
+    }
+
+    /* SUMMARY */
+
+    .summary {
+      border-top: 1px solid #30263b;
+      border-bottom: 1px solid #30263b;
+      padding: 18px 0;
+      margin-bottom: 22px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: #aaa3b3;
+    }
+
+    .total {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    /* BUTTON */
+
+    .pay-button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 11px;
+      background: linear-gradient(90deg, #873cff, #b05cff);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .pay-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .small-text {
+      text-align: center;
+      margin-top: 13px;
+      color: #716b78;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .message {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 10px;
+      background: #271a32;
+      border: 1px solid #633b7c;
+      color: #d8b7ff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .left,
+      .right {
+        padding: 30px;
+      }
+
+      .left {
+        border-bottom: 1px solid #30263f;
+      }
+
+      .left h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LEFT -->
+
+    <div class="left">
+
+      <div class="logo">
+        MAHARLIKA SMP
+      </div>
+
+      <h1>Checkout</h1>
+
+      <p class="description">
+        Purchase your Maharlika SMP items and continue your adventure.
+        Your purchase will be delivered to your Minecraft account after
+        payment confirmation.
+      </p>
+
+      <div class="product-card">
+
+        <div class="product-header">
+
+          <div class="product-name" id="productName">
+            1 Key
+          </div>
+
+          <div class="product-price" id="productPrice">
+            ₱300
+          </div>
+
+        </div>
+
+        <p class="product-description">
+          Maharlika SMP Key. Use your key on the server to receive
+          rewards from the corresponding crate.
+        </p>
+
+      </div>
+
+      <div class="security">
+        🔒 Secure checkout<br>
+        Your payment information should be handled by the payment
+        provider. Do not store card or banking information in this website.
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="right">
+
+      <div class="title">
+        Player Information
+      </div>
+
+      <label for="username">
+        Minecraft Username
+      </label>
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Your Minecraft username"
+        maxlength="16"
+      >
+
+
+      <label for="email">
+        Email Address
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="you@example.com"
+      >
+
+
+      <label for="product">
+        Select Product
+      </label>
+
+      <select id="product" onchange="updateProduct()">
+
+        <option value="1 Key|300">
+          1 Key — ₱300
+        </option>
+
+        <option value="2 Keys|600">
+          2 Keys — ₱600
+        </option>
+
+        <option value="3 Keys|900">
+          3 Keys — ₱900
+        </option>
+
+        <option value="5 Keys|1500">
+          5 Keys — ₱1,500
+        </option>
+
+        <option value="10 Keys|3000">
+          10 Keys — ₱3,000
+        </option>
+
+      </select>
+
+
+      <div class="title">
+        Payment Method
+      </div>
+
+
+      <div class="methods">
+
+        <label class="method">
+
+          <input
+            type="radio"
+            name="payment"
+            value="GCash"
+            checked
+          >
+
+          <span>
+            GCash
+          </span>
+
+        </label>
+
+
+        <label class="method">
+
+          <input
+            type="radio"
+            name="payment"
+            value="Maya"
+          >
+
+          <span>
+            Maya
+          </span>
+
+        </label>
+
+
+        <label class="method">
+
+          <input
+            type="radio"
+            name="payment"
+            value="Card"
+          >
+
+          <span>
+            Card
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <!-- SUMMARY -->
+
+      <div class="summary">
+
+        <div class="summary-row">
+
+          <span>
+            Product
+          </span>
+
+          <span id="summaryProduct">
+            1 Key
+          </span>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <span id="summaryPrice">
+            ₱300
+          </span>
+
+        </div>
+
+
+        <div class="summary-row total">
+
+          <span>
+            Total
+          </span>
+
+          <span id="totalPrice">
+            ₱300
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="pay-button"
+        onclick="continuePayment()"
+      >
+        Continue to Payment
+      </button>
+
+
+      <div
+        class="message"
+        id="message"
+      ></div>
+
+
+      <p class="small-text">
+        By continuing, you agree to the Maharlika SMP store rules
+        and purchase policy.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function peso(amount) {
+
+      return "₱" +
+        Number(amount).toLocaleString("en-PH");
+
+    }
+
+
+    function updateProduct() {
+
+      const value =
+        document.getElementById("product").value;
+
+      const parts = value.split("|");
+
+      const product = parts[0];
+      const price = parts[1];
+
+
+      document.getElementById("productName")
+        .textContent = product;
+
+      document.getElementById("productPrice")
+        .textContent = peso(price);
+
+      document.getElementById("summaryProduct")
+        .textContent = product;
+
+      document.getElementById("summaryPrice")
+        .textContent = peso(price);
+
+      document.getElementById("totalPrice")
+        .textContent = peso(price);
+
+    }
+
+
+    function continuePayment() {
+
+      const username =
+        document.getElementById("username")
+        .value.trim();
+
+      const email =
+        document.getElementById("email")
+        .value.trim();
+
+      const value =
+        document.getElementById("product").value;
+
+      const parts = value.split("|");
+
+      const product = parts[0];
+      const price = parts[1];
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+
+      const message =
+        document.getElementById("message");
+
+
+      if (!username) {
+
+        message.style.display = "block";
+
+        message.textContent =
+          "Please enter your Minecraft username.";
+
+        return;
+
+      }
+
+
+      if (!email) {
+
+        message.style.display = "block";
+
+        message.textContent =
+          "Please enter your email address.";
+
+        return;
+
+      }
+
+
+      /*
+        PAYMENT PROVIDER GOES HERE.
+
+        Example:
+
+        window.location.href =
+        "YOUR_PAYMENT_CHECKOUT_LINK";
+
+        DO NOT put secret API keys in this file.
+      */
+
+
+      message.style.display = "block";
+
+      message.innerHTML =
+        "Purchase ready!<br><br>" +
+
+        "Minecraft: <b>" + username + "</b><br>" +
+
+        "Product: <b>" + product + "</b><br>" +
+
+        "Amount: <b>" + peso(price) + "</b><br>" +
+
+        "Payment: <b>" + payment + "</b><br><br>" +
+
+        "Your payment provider needs to be connected here.";
+
+    }
+
+  </script>
+
+</body>
+</html>
