@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Payment Successful | MAHARLIKA SMP</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #32105f 0%,
+          transparent 40%
+        ),
+        #090711;
+
+      color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 25px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+
+    .brand span {
+      color: #a855f7;
+    }
+
+    .card {
+      background: rgba(20, 16, 32, 0.96);
+      border: 1px solid #38284a;
+      border-radius: 20px;
+      padding: 35px;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4);
+
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 75px;
+      height: 75px;
+
+      margin: 0 auto 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+
+      color: #4ade80;
+
+      font-size: 38px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #a9a1b4;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* INSTRUCTIONS */
+
+    .instructions {
+      text-align: left;
+
+      background: rgba(168, 85, 247, 0.08);
+
+      border: 1px solid rgba(168, 85, 247, 0.25);
+
+      border-radius: 14px;
+
+      padding: 20px;
+
+      margin-bottom: 20px;
+    }
+
+    .instructions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .step {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      margin-bottom: 13px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .number {
+      min-width: 27px;
+      height: 27px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background: #8b5cf6;
+
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .step-text {
+      color: #c9c0d2;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    .step-text strong {
+      color: #fff;
+    }
+
+    /* RECEIPT */
+
+    .receipt {
+      text-align: left;
+
+      background: #0d0a13;
+
+      border: 1px solid #302640;
+
+      border-radius: 14px;
+
+      padding: 20px;
+
+      margin-bottom: 20px;
+    }
+
+    .receipt-title {
+      color: #a855f7;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 18px;
+    }
+
+    .row {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 11px 0;
+
+      border-bottom: 1px solid #211b29;
+
+      font-size: 14px;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .row span:first-child {
+      color: #918898;
+    }
+
+    .row strong {
+      color: #fff;
+
+      text-align: right;
+
+      word-break: break-word;
+    }
+
+    .points {
+      color: #c084fc !important;
+      font-size: 17px;
+    }
+
+    .status {
+      color: #4ade80 !important;
+    }
+
+    /* DISCORD */
+
+    .discord-box {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(88, 101, 242, 0.15),
+          rgba(124, 58, 237, 0.08)
+        );
+
+      border: 1px solid rgba(124, 90, 200, 0.35);
+
+      border-radius: 14px;
+
+      padding: 22px;
+
+      margin-bottom: 18px;
+    }
+
+    .discord-box h2 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .discord-box p {
+      color: #aaa1b9;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      margin-bottom: 17px;
+    }
+
+    .discord-button {
+      display: block;
+
+      width: 100%;
+
+      padding: 15px;
+
+      border-radius: 10px;
+
+      background: #5865f2;
+
+      color: white;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .discord-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .home-button {
+      display: block;
+
+      width: 100%;
+
+      padding: 13px;
+
+      border-radius: 10px;
+
+      border: 1px solid #3b3048;
+
+      color: #c9c0d2;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      transition: 0.2s;
+    }
+
+    .home-button:hover {
+      border-color: #8b5cf6;
+      color: white;
+    }
+
+    .note {
+      margin-top: 18px;
+
+      color: #6f6878;
+
+      font-size: 11px;
+
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+
+      color: #625b69;
+
+      font-size: 11px;
+
+      margin-top: 20px;
+    }
+
+    @media (max-width: 550px) {
+
+      .card {
+        padding: 25px 18px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      .row {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .row strong {
+        text-align: left;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="brand">
+      ⚔️ MAHARLIKA <span>SMP</span>
+    </div>
+
+    <div class="card">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h1>
+        Payment Successful!
+      </h1>
+
+      <p class="subtitle">
+        Your payment has been received.
+        Follow the steps below to complete your order.
+      </p>
+
+
+      <!-- IMPORTANT INSTRUCTIONS -->
+
+      <div class="instructions">
+
+        <h2>
+          🎫 What to do next
+        </h2>
+
+        <div class="step">
+
+          <div class="number">
+            1
+          </div>
+
+          <div class="step-text">
+            <strong>Screenshot this receipt.</strong><br>
+            Keep a screenshot showing your Order ID,
+            Minecraft username, points, and payment status.
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">
+            2
+          </div>
+
+          <div class="step-text">
+            <strong>Join the MAHARLIKA Discord.</strong><br>
+            Click the Discord button below.
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">
+            3
+          </div>
+
+          <div class="step-text">
+            <strong>Create a payment ticket.</strong><br>
+            Open a support/payment ticket and send
+            your receipt screenshot.
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="number">
+            4
+          </div>
+
+          <div class="step-text">
+            <strong>Wait for staff verification.</strong><br>
+            Staff will verify your payment and process
+            your Points order.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RECEIPT -->
+
+      <div class="receipt">
+
+        <div class="receipt-title">
+          PAYMENT RECEIPT
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Order ID
+          </span>
+
+          <strong id="orderId">
+            MH-000000
+          </strong>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Minecraft Username
+          </span>
+
+          <strong id="username">
+            Player
+          </strong>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Points
+          </span>
+
+          <strong
+            id="points"
+            class="points"
+          >
+            250 Points
+          </strong>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Amount Paid
+          </span>
+
+          <strong id="price">
+            ₱50
+          </strong>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Payment Method
+          </span>
+
+          <strong id="paymentMethod">
+            GCash
+          </strong>
+
+        </div>
+
+
+        <div class="row">
+
+          <span>
+            Status
+          </span>
+
+          <strong class="status">
+            ✓ PAID
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- DISCORD -->
+
+      <div class="discord-box">
+
+        <h2>
+          💬 Create Your Payment Ticket
+        </h2>
+
+        <p>
+          Join our Discord and create a
+          <strong>payment ticket</strong>.
+          Send the screenshot of this receipt
+          to our staff so they can verify your order.
+        </p>
+
+        <a
+          class="discord-button"
+          href="https://discord.gg/5waByTQENN"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🎫 Join Discord & Create Ticket
+        </a>
+
+      </div>
+
+
+      <a
+        class="home-button"
+        href="index.html"
+      >
+        ← Return to MAHARLIKA SMP
+      </a>
+
+
+      <p class="note">
+        Keep your Order ID until your Points have been delivered.
+        Never share your password, payment PIN, or OTP.
+      </p>
+
+    </div>
+
+
+    <footer>
+      © 2026 MAHARLIKA SMP · Not affiliated with Mojang or Microsoft.
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    /*
+      ============================================
+      READ ORDER INFORMATION FROM URL
+      ============================================
+
+      Example:
+
+      success.html
+      ?username=Xander123
+      &points=1200
+      &price=200
+      &payment=GCash
+      &order=MH-A82K91
+    */
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const username =
+      params.get("username");
+
+    const points =
+      params.get("points");
+
+    const price =
+      params.get("price");
+
+    const payment =
+      params.get("payment");
+
+    const order =
+      params.get("order");
+
+
+    /*
+      ============================================
+      DISPLAY ORDER INFORMATION
+      ============================================
+    */
+
+
+    if (username) {
+
+      document.getElementById(
+        "username"
+      ).textContent = username;
+
+    }
+
+
+    if (points) {
+
+      document.getElementById(
+        "points"
+      ).textContent =
+        Number(points).toLocaleString()
+        + " Points";
+
+    }
+
+
+    if (price) {
+
+      document.getElementById(
+        "price"
+      ).textContent =
+        "₱"
+        + Number(price).toLocaleString();
+
+    }
+
+
+    if (payment) {
+
+      document.getElementById(
+        "paymentMethod"
+      ).textContent = payment;
+
+    }
+
+
+    if (order) {
+
+      document.getElementById(
+        "orderId"
+      ).textContent = order;
+
+    }
+
+  </script>
+
+</body>
+</html>
