@@ -1,6 +1,6 @@
 // MAHARLIKA SMP SETTINGS
 // Change this to your real Minecraft server address.
-const SERVER_IP = "Coming Soon";
+const SERVER_IP = "maharlika.fusionpass.shop";
 
 document.getElementById("serverIp").textContent = SERVER_IP;
 
